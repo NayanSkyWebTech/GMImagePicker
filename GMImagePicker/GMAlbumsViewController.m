@@ -323,6 +323,10 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
         cell.imageView1.image = [UIImage imageNamed:@"GMEmptyFolder"];
     }
     
+    cell.imageView.frame = cell.imageView1.frame;
+    cell.imageView.image = [UIImage imageNamed:@"GMImagePickerPlaceHolder"];
+    cell.imageView.hidden = YES;
+    
     return cell;
 }
 
