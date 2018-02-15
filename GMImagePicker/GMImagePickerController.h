@@ -171,6 +171,7 @@ static CGSize const kPopoverContentSize = {480, 720};
 @property (nonatomic) BOOL useCustomFontForNavigationBar;
 @property (nonatomic) NSInteger maxNumberOfAssset;
 @property (nonatomic) BOOL isVideo;
+@property (nonatomic) BOOL isEverytimeRemoveSelectedCell;
 
 /**
  * A reference to the navigation controller used to manage the whole picking process
