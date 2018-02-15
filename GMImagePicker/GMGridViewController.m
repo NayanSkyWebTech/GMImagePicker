@@ -369,6 +369,19 @@ NSString * const GMGridViewCellIdentifier = @"GMGridViewCellIdentifier";
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(self.picker.maxNumberOfAssset !=0 && self.picker.maxNumberOfAssset == self.picker.selectedAssets.count) {
+        NSLog(@"You selected max Images");
+        
+        NSString *message = [NSString stringWithFormat:@"%@ %zd %@", NSLocalizedString(@"You can select", @""), self.picker.maxNumberOfAssset, (self.picker.isVideo)? NSLocalizedString(@"VIDEOS", @"") : NSLocalizedString(@"images", @"")];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Max Limit" message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertViewStyleDefault handler:nil];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+        return NO;
+    }
+    
     PHAsset *asset = self.assetsFetchResults[indexPath.item];
     
     GMGridViewCell *cell = (GMGridViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
