@@ -129,9 +129,8 @@ NSString * const GMGridViewCellIdentifier = @"GMGridViewCellIdentifier";
     [self resetCachedAssets];
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
     
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
-    {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
+    if(self.picker.isEverytimeRemoveSelectedCell) {
+        [self.picker.selectedAssets removeAllObjects];
     }
 }
 
