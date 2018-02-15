@@ -329,9 +329,7 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
     }
     
     cell.imageView.frame = cell.imageView1.frame;
-    cell.imageView.image = [UIImage imageNamed:@"GMImagePickerPlaceHolder"];
-    cell.imageView.hidden = YES;
-    
+    cell.imageView.image = [UIImage imageNamed:@"GMImagePickerPlaceHolder" inBundle:[NSBundle bundleForClass:GMAlbumsViewController.class] compatibleWithTraitCollection:nil];    cell.imageView.hidden = YES;
     return cell;
 }
 
