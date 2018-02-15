@@ -169,6 +169,8 @@ static CGSize const kPopoverContentSize = {480, 720};
 @property (nonatomic) CGFloat pickerFontHeaderSize;
 @property (nonatomic) UIStatusBarStyle pickerStatusBarStyle;
 @property (nonatomic) BOOL useCustomFontForNavigationBar;
+@property (nonatomic) NSInteger maxNumberOfAssset;
+@property (nonatomic) BOOL isVideo;
 
 /**
  * A reference to the navigation controller used to manage the whole picking process
