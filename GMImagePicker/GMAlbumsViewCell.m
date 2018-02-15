@@ -108,19 +108,18 @@
         self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
         
         // Set next text labels contraints :
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[imageView1]-(offset)-[textLabel]-|"
-                                                                                 options:0
-                                                                                 metrics:@{@"offset": @(kAlbumImageToTextSpace)}
-                                                                                   views:@{@"textLabel": self.textLabel,
-                                                                                           @"imageView1": self.imageView1}]];
-        
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[imageView1]-(offset)-[detailTextLabel]-|"
-                                                                                 options:0
-                                                                                 metrics:@{@"offset": @(kAlbumImageToTextSpace)}
-                                                                                   views:@{@"detailTextLabel": self.detailTextLabel,
-                                                                                           @"imageView1": self.imageView1}]];
-        
-        
+//        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[imageView1]-(offset)-[textLabel]-|"
+//                                                                                 options:0
+//                                                                                 metrics:@{@"offset": @(kAlbumImageToTextSpace)}
+//                                                                                   views:@{@"textLabel": self.textLabel,
+//                                                                                           @"imageView1": self.imageView1}]];
+//
+//        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[imageView1]-(offset)-[detailTextLabel]-|"
+//                                                                                 options:0
+//                                                                                 metrics:@{@"offset": @(kAlbumImageToTextSpace)}
+//                                                                                   views:@{@"detailTextLabel": self.detailTextLabel,
+//                                                                                           @"imageView1": self.imageView1}]];
+
         [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.textLabel
                                                                         attribute:NSLayoutAttributeBottom
                                                                         relatedBy:NSLayoutRelationEqual
@@ -134,10 +133,23 @@
                                                                            toItem:self.textLabel.superview
                                                                         attribute:NSLayoutAttributeCenterY
                                                                        multiplier:1.f constant:+4.f]]];
+        
+        
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textLabel
+                                                                     attribute:NSLayoutAttributeLeading
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self.imageView1
+                                                                     attribute:NSLayoutAttributeTrailing
+                                                                    multiplier:1.0
+                                                                      constant:8]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.detailTextLabel
+                                                                     attribute:NSLayoutAttributeLeading
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self.imageView1
+                                                                     attribute:NSLayoutAttributeTrailing
+                                                                    multiplier:1.0
+                                                                      constant:8]];
     }
-    
-    
-    
     return self;
 }
 
