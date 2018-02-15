@@ -146,8 +146,10 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
         options.predicate = [NSPredicate predicateWithFormat:@"mediaType in %@", self.picker.mediaTypes];
         options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
         PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsWithOptions:options];
-        [allFetchResultArray addObject:assetsFetchResult];
-        [allFetchResultLabel addObject:NSLocalizedStringFromTableInBundle(@"picker.table.all-photos-label",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class], @"All photos")];
+        if(assetsFetchResult.count>0) {
+            [allFetchResultArray addObject:assetsFetchResult];
+            [allFetchResultLabel addObject:NSLocalizedStringFromTableInBundle(@"picker.table.all-photos-label",  @"GMImagePicker", [NSBundle bundleForClass:GMImagePickerController.class], @"All photos")];
+        }
     }
     
     //User albums:
@@ -162,14 +164,17 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
             PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
             
             //Albums collections are allways PHAssetCollectionType=1 & PHAssetCollectionSubtype=2
-            
             PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:options];
-            [userFetchResultArray addObject:assetsFetchResult];
-            [userFetchResultLabel addObject:collection.localizedTitle];
+            
+            if(assetsFetchResult.count>0) {
+                [userFetchResultArray addObject:assetsFetchResult];
+                [userFetchResultLabel addObject:collection.localizedTitle];
+            }
+            
         }
     }
     
-                                  
+    
     //Smart albums: Sorted by descending creation date.
     NSMutableArray *smartFetchResultArray = [[NSMutableArray alloc] init];
     NSMutableArray *smartFetchResultLabel = [[NSMutableArray alloc] init];
