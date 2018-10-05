@@ -111,7 +111,8 @@ static UIColor *disabledColor;
         _coverView.hidden = YES;
         
         _selectedButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _selectedButton.frame = CGRectMake(2*self.bounds.size.width/3, 0*self.bounds.size.width/3, self.bounds.size.width/3, self.bounds.size.width/3);
+//        _selectedButton.frame = CGRectMake(2*self.bounds.size.width/3, 0*self.bounds.size.width/3, self.bounds.size.width/3, self.bounds.size.width/3);
+        _selectedButton.frame = CGRectMake(self.bounds.size.width-50, 0, 50, 50);
         _selectedButton.contentMode = UIViewContentModeTopRight;
         _selectedButton.adjustsImageWhenHighlighted = NO;
         [_selectedButton setImage:nil forState:UIControlStateNormal];
